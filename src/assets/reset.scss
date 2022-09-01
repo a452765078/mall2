@@ -1,0 +1,24 @@
+* {
+    margin:0;
+    padding: 0;
+}
+a {
+    text-decoration:none;
+}
+ul,li {
+    list-style: none;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.clearfix::after {
+    display: table;
+    clear: both;
+    content: ' ';
+}
+a {
+    cursor: pointer;
+}
