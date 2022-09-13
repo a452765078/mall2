@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from '../pages/Index.vue'
-import Product from '../pages/Product.vue'
+import ProductInfo from '../pages/ProductInfo.vue'
 import Login from '../pages/Login.vue'
+import ProductDetail from '../pages/ProductDetail.vue'
+import orderConfirm from '../pages/orderConfirm.vue'
 
 Vue.use(VueRouter)
 
@@ -19,15 +21,26 @@ let routes = [
         redirect:"/index"
     },
     {
-        path:"/product",
-        name:'Product',
-        component:Product,
+        path:"/productInfo/:id",
+        name:'productInfo',
+        component:ProductInfo,
     },
     {
         path:"/login",
         name:'login',
         component:Login,
+    },
+    {
+        path:"/productDetail/:id",
+        name:'productDetail',
+        component:ProductDetail,
+    },
+    {
+        path:"/orderConfirm",
+        name:'orderConfirm',
+        component:orderConfirm,
     }
+
 ]
 
 export default new VueRouter({
