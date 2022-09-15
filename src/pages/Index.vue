@@ -19,11 +19,11 @@
             <img src="../../public/imgs/mix-alpha.jpg" alt="">
           </div>
           <div class="productList clearfix">
-            <a :href="'#/productInfo/'+item.id" class="productItem fl" v-for="item in productList" :key="item.id">
+            <a href="javascript:;" class="productItem fl" v-for="item in productList" :key="item.id">
               <div class="wrapper">
 
                 <div class="type">新品</div>
-                <img :src="item.img" alt="">
+                <router-link :to="'/productInfo/'+item.id"><img :src="item.img" alt="" ></router-link>
                 <div class="name">{{item.name}}</div>
                 <div class="desc">{{item.detail}}</div>
                 <div class="price">

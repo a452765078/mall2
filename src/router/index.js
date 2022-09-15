@@ -4,7 +4,8 @@ import Index from '../pages/Index.vue'
 import ProductInfo from '../pages/ProductInfo.vue'
 import Login from '../pages/Login.vue'
 import ProductDetail from '../pages/ProductDetail.vue'
-import orderConfirm from '../pages/orderConfirm.vue'
+import OrderConfirm from '../pages/OrderConfirm.vue'
+import ShoppingCart from '../pages/ShoppingCart.vue'
 
 Vue.use(VueRouter)
 
@@ -38,7 +39,13 @@ let routes = [
     {
         path:"/orderConfirm",
         name:'orderConfirm',
-        component:orderConfirm,
+        component:OrderConfirm,
+    }
+    
+    ,{
+        path:"/shoppingCart",
+        name:'shoppingCart',
+        component:ShoppingCart,
     }
 
 ]
