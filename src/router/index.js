@@ -6,6 +6,9 @@ import Login from '../pages/Login.vue'
 import ProductDetail from '../pages/ProductDetail.vue'
 import OrderConfirm from '../pages/OrderConfirm.vue'
 import ShoppingCart from '../pages/ShoppingCart.vue'
+import OrderDetail from '../pages/OrderDetail.vue'
+import OrderList from '../pages/OrderList.vue'
+import alipay from '../pages/alipay.vue'
 
 Vue.use(VueRouter)
 
@@ -46,6 +49,22 @@ let routes = [
         path:"/shoppingCart",
         name:'shoppingCart',
         component:ShoppingCart,
+    },
+    {
+        
+        path:"/orderDetail",
+        name:'orderDetail',
+        component: OrderDetail,
+    },
+    {
+        
+        path:"/OrderList",
+        name:'OrderList',
+        component: OrderList,
+    },{
+        path:"/alipay",
+        name:'alipay',
+        component: alipay,
     }
 
 ]

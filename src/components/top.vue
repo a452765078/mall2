@@ -69,6 +69,9 @@ export default {
       a {
         color: #B0B0B0;
         margin-right: 17px;
+        &:last-child {
+          margin-right: 0px;
+        }
       }
       .left {
 

@@ -38,3 +38,10 @@ h1,h2,h3,h4,h5,h6,p {
   .cell {
     display: table-cell;
   }
+
+input {
+
+    border: 0;  // 去除未选中状态边框
+    outline: none; // 去除选中状态边框
+    background-color: rgba(0, 0, 0, 0);
+}
