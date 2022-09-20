@@ -4,7 +4,8 @@ import router from './router/index.js'
 import axios from 'axios'
 import Cookie from 'vue-cookie'
 import store from './storage/index.js'
-
+import { InfiniteScroll } from 'mint-ui';
+Vue.use(InfiniteScroll)
 
 
 Vue.config.productionTip = false
