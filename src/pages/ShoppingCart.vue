@@ -75,7 +75,7 @@
                         <span class="productCount-selected">{{selectedProductCount}}</span>件
                     </span>
 
-                    <div class="checkOut fr">去结算</div>
+                    <div class="checkOut fr" @click="toOrderCofirm">去结算</div>
                     <div class="total fr">
                         <span class="desc">合计：</span>
                         <span class="totalPrice">{{totalPrice}}元</span>
@@ -195,6 +195,9 @@ export default {
             this.axios.delete(`/carts/${productId}`).then(res => {
                 this.publicGetData(res)
             })
+        },
+        toOrderCofirm() {
+            this.$router.push("/orderConfirm")
         }
 
     }

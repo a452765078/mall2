@@ -108,7 +108,7 @@ export default {
             if(this.hasNextPage) {
                 this.pageNum++
             }else {
-                alert("已经是最后一页了")
+                this.$message.warn("已经是最后一页了")
                 return 
             }
             this.axios.get(`/orders?pageSize=${this.pageSize}&pageNum=${this.pageNum}`).then(res=>{

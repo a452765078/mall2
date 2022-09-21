@@ -110,7 +110,7 @@
             </div>
         </div>
         <!-- modal -->
-        <div class="modal" v-if="isShowAddressModal">
+        <div class="modal" v-show="isShowAddressModal">
             <div class="back"></div>
             <div class="modalContent">
                 <div class="header">
@@ -151,7 +151,7 @@
                     </div>
                 </div>
                 <div class="operate">
-                    <div class="save" @click="addAddress">保存</div>
+                    <div class="save" @click="submitSave">保存</div>
                     <div class="cancel" @click="closeModal">取消</div>
                 </div>
             </div>
@@ -187,7 +187,8 @@ export default {
             isShowAddressModal: false,
             receiverInfo: {},
             isSelected:false,
-            selectedId:''
+            selectedId:'',
+            action: ''
         }
     },
     mounted() {
@@ -206,14 +207,12 @@ export default {
         },
         getCartList() {
             this.axios.get('/carts').then(res=>{
-                console.log(res)
                 this.publicGetData(res)
             })
         },
         getAddressList() {
             this.axios.get('/shippings').then(res=>{
                 this.addressInfoList = res.list;
-                console.log(this.addressInfoList)
             })
         },
         openModal(addressInfo,action) {
@@ -222,11 +221,13 @@ export default {
             if(action === 'edit') {
                 this.receiverInfo = JSON.parse(JSON.stringify(addressInfo));
                 // this.receiverInfo = addressInfo
+            }else if(action === 'add') {
+                this.receiverInfo = {}
             }
         },
         closeModal() {
             this.isShowAddressModal = false;
-            this.receiverInfo = {}
+            // this.receiverInfo = {}
         },
         submitSave() {
             if(this.action === 'edit') {
@@ -237,17 +238,25 @@ export default {
         },
         deleteAddress(shippingId) {
             this.axios.delete(`/shippings/${shippingId}`).then(res=>{
-                alert("删除成功",res)
+                this.$message.success("删除地址成功",res)
                 this.getAddressList();
             })
         },  
         editAddress() {
-            let {shippingId} = this.receiverInfo;
-            this.axios.put(`/shippings/${shippingId}`,{
-                ...this.receiverInfo
+            let {id} = this.receiverInfo;
+            let {receiverName,receiverPhone,receiverMobile,receiverProvince,receiverCity,receiverDistrict,receiverAddress,receiverZip} = this.receiverInfo;
+            this.axios.put(`/shippings/${id}`,{
+                receiverName,
+                receiverPhone,
+                receiverMobile,
+                receiverProvince,
+                receiverCity,
+                receiverDistrict,
+                receiverAddress,
+                receiverZip
             }).then(res=>{
-                alert("修改成功",res)
-                this.addressInfoList();
+                this.$message.success("修改成功",res)
+                this.getAddressList();
                 this.closeModal()
             })
         },      
@@ -256,16 +265,16 @@ export default {
             this.axios.post('/shippings',{
                 ...this.receiverInfo
             }).then(res=>{
-                alert("新建地址成功",res)
+                this.$message.success("新建地址成功",res)
                 this.getAddressList();
                 this.closeModal()
             }).catch(err=>{
-                alert("新建地址失败",err)
+                this.$message.error("新建地址失败",err)
             })
         },
         submitOrder() {
             if(!this.selectedId) {
-                alert("需要选择地址")
+                this.$message.error("需要选择地址")
                 return
             }
             this.axios.post("/orders",{

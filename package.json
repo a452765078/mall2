@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
+    "element-ui": "^2.15.10",
     "mint-ui": "^2.2.13",
     "node-sass": "^5.0.0",
     "qrcode": "^1.5.1",
